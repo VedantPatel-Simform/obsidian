@@ -63,5 +63,5 @@ CREATE TABLE IF NOT EXISTS CustomerReviews (
 	comment VARCHAR(200),
 	createdAt TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 );
-
 ```
+
