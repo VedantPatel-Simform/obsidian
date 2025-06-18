@@ -156,3 +156,24 @@ canActivate(ctx: ExecutionContext) : boolean | Promise<boolean> | Observable<boo
 	if(roleArray.includes(req.user.role)){} // guard logic here
 }
 ```
+
+## Circular Referencing
+```typescript
+
+@Injectable()
+export class CatsService {
+  constructor(
+    @Inject(forwardRef(() => CommonService))
+    private commonService: CommonService,
+  ) {}
+}
+
+@Injectable()
+export class CommonService {
+  constructor(
+    @Inject(forwardRef(() => CatsService))
+    private catService: CatsService,
+  ) {}
+}
+
+```
